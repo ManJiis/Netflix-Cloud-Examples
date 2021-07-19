@@ -1,8 +1,8 @@
-package top.b0x0.cloud.netflix.provider2;
+package top.b0x0.cloud.netflix.registrycenter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
@@ -10,11 +10,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @SpringBootApplication
 @EnableScheduling
-@EnableDiscoveryClient
-public class CloudProvider2Application {
+@EnableEurekaServer
+public class CloudRegistryCenterApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CloudProvider2Application.class, args);
+        SpringApplication.run(CloudRegistryCenterApplication.class, args);
     }
 
 }

@@ -1,29 +1,37 @@
 server:
-  port: 8091
-service:
-  version: 1.0.0
+  port: 9091
+spring:
+  application:
+    name: b0x0-cloud-provider1
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/sdnd?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root@123
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    #    password: redis
+    timeout: 5000
+    jedis:
+      pool:
+        max-idle: 500
+        min-idle: 50
+        max-active: 1000
+        max-wait: 2000
 
-dubbo:
-  cloud:
-    # The subscribed services in consumer side
-    subscribed-services: b0x0-cloud-provider1,b0x0-cloud-provider2
-  scan:
-    # dubbo 服务扫描基准包
-    base-packages: top.b0x0.cloud.alibaba.provider1.service
-  protocols:
-    dubbo:
-      # dubbo 协议
-      name: dubbo
-      # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
-      port: 20888
-  provider:
-    filter: paramReceiveFilter1
-    retries: 3
-    timeout: 30000
-#    rest:
-#      name: rest
-#      port: 9090
-#      server: netty
-feign:
-  hystrix:
+eureka:
+  client:
     enabled: true
+    #是否注册值的信息到Eureka，默认True
+    register-with-eureka: true
+    #是否拉取Eureka上的服务列表，当前是Server，不需要
+    fetch-registry: true
+    service-url:  #Eureka的地址
+      defaultZone: Http://localhost:9090/eureka
+  instance:
+    prefer-ip-address: true #当调用getHostname获取实例的hostname时，返回ip而不是host名称
+    ip-address: 127.0.0.1 #指定自己的ip,不指定的话会自己寻找
+

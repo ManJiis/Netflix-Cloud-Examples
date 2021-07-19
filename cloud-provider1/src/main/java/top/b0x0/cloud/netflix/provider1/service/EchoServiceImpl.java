@@ -1,10 +1,10 @@
 package top.b0x0.cloud.netflix.provider1.service;
 
-import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import top.b0x0.cloud.netflix.api.EchoService;
+import top.b0x0.cloud.netflix.common.exception.BusinessErrorException;
 
 /**
  * @author ManJiis
@@ -17,16 +17,16 @@ public class EchoServiceImpl implements EchoService {
 
     @Override
     public String sayHello(String param) {
-        log.info("provider1 = {}", param);
+        log.info("provider1 say : {}", param);
         if ("error".equals(param)) {
-            throw new RuntimeException("error oops...");
+            throw new BusinessErrorException("error oops...");
         }
-        return param;
+        return "provider1 say : " + param;
     }
 
     @Override
     public String bonjour(String name) {
-        return null;
+        return "provider1 bonjour : " + name;
     }
 
     // Fallback 函数，函数签名与原函数一致或加一个 Throwable 类型的参数.
@@ -35,7 +35,7 @@ public class EchoServiceImpl implements EchoService {
     }
 
     // Block 异常处理函数，参数最后多一个 BlockException，其余与原函数一致.
-    public String exceptionHandler(String s, BlockException ex) {
+    public String exceptionHandler(String s, BusinessErrorException ex) {
         // Do some log here.
         ex.printStackTrace();
         return "Oops, error occurred at " + s;

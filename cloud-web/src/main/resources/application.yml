@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: b0x0-cloud-consumer
+  main:
+    allow-bean-definition-overriding: true
+#  profiles:
+#    active: dev
+#    include: dev,nacos
+
+server:
+  port: 9999
+service:
+  version: 1.0.0
+
+eureka:
+  client:
+    enabled: true
+    #是否注册值的信息到Eureka，默认True
+    register-with-eureka: false
+    #是否拉取Eureka上的服务列表，当前是Client，需要
+    fetch-registry: true
+    service-url:  #Eureka的地址
+      defaultZone: Http://localhost:9090/eureka
+  instance:
+    #当调用getHostname获取实例的hostname时，返回ip而不是host名称
+    prefer-ip-address: true
+    #指定自己的ip,不指定的话会自己寻找
+    ip-address: 127.0.0.1
+
+#feign:
+#  httpclient:
+#    enabled: true
+
+
+

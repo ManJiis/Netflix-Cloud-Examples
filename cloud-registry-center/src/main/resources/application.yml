@@ -1,0 +1,16 @@
+server:
+    port: 9090
+spring:
+    application:
+        name: b0x0-eureka-server  #会在Eureka服务列表显示的应用名
+eureka:
+    instance:
+        hostname: localhost
+    client:
+        #是否注册值的信息到Eureka，默认True
+        register-with-eureka: false
+        #是否拉取Eureka上的服务列表，当前是Server，不需要
+        fetch-registry: false
+        # EurekaServer的地址，如果是集群，需要加上其它Server的地址。
+        service-url:
+            defaultZone: Http://${eureka.instance.hostname}:${server.port}/eureka

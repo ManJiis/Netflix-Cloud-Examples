@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-provider2</artifactId>
+    <artifactId>cloud-web</artifactId>
     <version>${revision}</version>
-    <name>cloud-provider2</name>
+    <name>cloud-web</name>
 
-    <description>Spring Cloud Netflix Provider</description>
+    <description>Spring Cloud Netflix Consumer</description>
 
     <parent>
         <artifactId>netflix-cloud-examples</artifactId>
@@ -27,6 +27,7 @@
             <groupId>top.b0x0.cloud.netflix</groupId>
             <artifactId>cloud-common</artifactId>
             <version>${revision}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>top.b0x0.cloud.netflix</groupId>
@@ -56,25 +57,45 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!-- Spring Cloud Open Feign -->
+        <!--openFeign的依赖 以下三个，不然抛出ClassNotFoundException-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <!--
-                <dependency>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-data-mongodb</artifactId>
-                </dependency>
-        -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus.starter.version}</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.netflix.archaius</groupId>
+            <artifactId>archaius-core</artifactId>
+            <version>0.7.6</version>
+        </dependency>
+
+        <!-- 解决Feign Get请求自动变成POST  feign.httpclient.enabled = true -->
+<!--
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.9</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-httpclient</artifactId>
+            <version>10.2.3</version>
+        </dependency>
+-->
+
+        <!-- Spring Retry -->
+        <dependency>
+            <groupId>org.springframework.retry</groupId>
+            <artifactId>spring-retry</artifactId>
+        </dependency>
+
+        <!-- List all Spring Cloud starters for Service Discovery -->
 
         <!-- 2. Eureka Service Discovery -->
         <dependency>
@@ -84,15 +105,6 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
         </dependency>
 
     </dependencies>
@@ -115,7 +127,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.7.RELEASE</version>
                 <configuration>
-                    <mainClass>top.b0x0.cloud.netflix.provider2.CloudProvider2Application</mainClass>
+                    <mainClass>top.b0x0.cloud.netflix.consumer.CloudWebApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

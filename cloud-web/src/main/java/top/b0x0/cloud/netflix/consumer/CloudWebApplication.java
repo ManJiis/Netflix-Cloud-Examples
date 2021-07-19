@@ -1,23 +1,28 @@
-package top.b0x0.cloud.netflix.provider1;
+package top.b0x0.cloud.netflix.consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
+ * EnableDiscoveryClient 服务注册与发现
+ * EnableFeignClients 服务调用
+ *
  * @author ManJiis
  */
 @SpringBootApplication
 @EnableScheduling
 @EnableDiscoveryClient
-public class CloudProvider1Application {
-    private static final Logger log = LoggerFactory.getLogger(CloudProvider1Application.class);
+@EnableFeignClients(basePackages = "top.b0x0.cloud.netflix.consumer.service")
+public class CloudWebApplication {
+    private static final Logger log = LoggerFactory.getLogger(CloudWebApplication.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(CloudProvider1Application.class, args);
+        SpringApplication.run(CloudWebApplication.class, args);
     }
 
 }

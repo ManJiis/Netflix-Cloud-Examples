@@ -57,7 +57,7 @@
         <module>cloud-common</module>
         <module>cloud-provider1</module>
         <module>cloud-provider2</module>
-        <module>cloud-consumer</module>
+        <module>cloud-web</module>
     </modules>
 
     <dependencyManagement>

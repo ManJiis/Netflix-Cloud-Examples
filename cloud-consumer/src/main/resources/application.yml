@@ -1,0 +1,11 @@
+spring:
+  profiles:
+#    active: dev
+    include: dev,nacos
+
+server:
+  port: 8090
+service:
+  version: 1.0.0
+
+

@@ -1,0 +1,8 @@
+server:
+  port: 8092
+service:
+  version: 1.0.0
+
+feign:
+  hystrix:
+    enabled: true

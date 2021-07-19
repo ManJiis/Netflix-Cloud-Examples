@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: b0x0-cloud-consumer
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+

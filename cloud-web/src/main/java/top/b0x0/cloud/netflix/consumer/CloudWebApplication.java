@@ -20,7 +20,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = "top.b0x0.cloud.netflix.consumer.feignservice")
+@EnableFeignClients(basePackages = "top.b0x0.cloud.netflix.consumer.feignclient")
 public class CloudWebApplication {
     private static final Logger log = LoggerFactory.getLogger(CloudWebApplication.class);
 

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import top.b0x0.cloud.netflix.common.util.ServiceList;
 import top.b0x0.cloud.netflix.common.vo.R;
-import top.b0x0.cloud.netflix.consumer.feignservice.Echo1Service;
-import top.b0x0.cloud.netflix.consumer.feignservice.Echo2Service;
+import top.b0x0.cloud.netflix.consumer.feignclient.Echo1Client;
+import top.b0x0.cloud.netflix.consumer.feignclient.Echo2Client;
 
 import java.net.URI;
 import java.util.List;
@@ -30,29 +30,29 @@ public class EchoController {
     private final Logger log = LoggerFactory.getLogger(EchoController.class);
 
     @Autowired
-    private Echo1Service echo1Service;
+    private Echo1Client echo1Client;
 
     @Autowired
-    private Echo2Service echo2Service;
+    private Echo2Client echo2Client;
 
     @GetMapping("/p1SayHello")
     public R p1SayHello(String name) {
-        return echo1Service.sayHello(name);
+        return echo1Client.sayHello(name);
     }
 
     @GetMapping("/p1bonjour")
     public R p1bonjour(String name) {
-        return echo1Service.bonjour(name);
+        return echo1Client.bonjour(name);
     }
 
     @GetMapping("/p2SayHello")
     public R p2SayHello(String name) {
-        return echo2Service.sayHello(name);
+        return echo2Client.sayHello(name);
     }
 
     @GetMapping("/p2bonjour")
     public R p2bonjour(String name) {
-        return echo2Service.bonjour(name);
+        return echo2Client.bonjour(name);
     }
 
     @Autowired

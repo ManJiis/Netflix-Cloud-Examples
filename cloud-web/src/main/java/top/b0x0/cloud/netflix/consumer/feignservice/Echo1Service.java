@@ -1,4 +1,4 @@
-package top.b0x0.cloud.netflix.consumer.service;
+package top.b0x0.cloud.netflix.consumer.feignservice;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

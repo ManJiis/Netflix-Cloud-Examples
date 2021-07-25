@@ -31,5 +31,9 @@ eureka:
 #  httpclient:
 #    enabled: true
 
+feign:
+  hystrix:
+    enabled: true
+
 
 

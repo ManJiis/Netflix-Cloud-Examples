@@ -1,9 +1,8 @@
-package top.b0x0.cloud.netflix.consumer.service;
+package top.b0x0.cloud.netflix.consumer.feignservice;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import top.b0x0.cloud.netflix.common.vo.R;
 

@@ -7,19 +7,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import top.b0x0.cloud.netflix.api.EchoService;
 import top.b0x0.cloud.netflix.common.util.ServiceList;
 import top.b0x0.cloud.netflix.common.vo.R;
-import top.b0x0.cloud.netflix.consumer.service.Echo1Service;
-import top.b0x0.cloud.netflix.consumer.service.Echo2Service;
+import top.b0x0.cloud.netflix.consumer.feignservice.Echo1Service;
+import top.b0x0.cloud.netflix.consumer.feignservice.Echo2Service;
 
 import java.net.URI;
-import java.util.HashMap;
 import java.util.List;
 
 /**
